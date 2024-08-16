@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 display.textContent = '0';
             } else if (value === '=') {
                 if (currentInput && previousInput && operator) {
-                    currentInput = eval(`${previousInput} ${operator} ${currentInput}`);
+                    currentInput = calculate(previousInput, operator, currentInput);
                     display.textContent = currentInput;
                     previousInput = '';
                     operator = '';
@@ -33,4 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    function calculate(a, operator, b) {
+        const num1 = parseFloat(a);
+        const num2 = parseFloat(b);
+        switch (operator) {
+            case '+':
+                return (num1 + num2).toString();
+            case '-':
+                return (num1 - num2).toString();
+            case '*':
+                return (num1 * num2).toString();
+            case '/':
+                return (num1 / num2).toString();
+            default:
+                return '';
+        }
+    }
 });
