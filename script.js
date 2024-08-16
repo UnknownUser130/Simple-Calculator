@@ -26,10 +26,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     previousInput = currentInput;
                     currentInput = '';
                     operator = value;
+                    display.textContent = `${previousInput} ${operator}`
                 }
             } else {
                 currentInput += value;
-                display.textContent = currentInput;
+                display.textContent = operator ? `${previousInput} ${operator} ${currentInput}` : currentInput;
             }
         });
     });
