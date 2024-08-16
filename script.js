@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 operator = '';
                 previousInput = '';
                 display.textContent = '0';
+            }else if (value === 'D') { // Handle Delete button
+                if (currentInput) {
+                    currentInput = currentInput.slice(0, -1);
+                    display.textContent = operator ? `${previousInput} ${operator} ${currentInput}` : currentInput || '0';
+                }
             } else if (value === '=') {
                 if (currentInput && previousInput && operator) {
                     currentInput = calculate(previousInput, operator, currentInput);
@@ -46,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case '*':
                 return (num1 * num2).toString();
             case '/':
-                return (num1 / num2).toString();
+                return ((num1 / num2).toFixed(14)).toString();
             default:
                 return '';
         }
