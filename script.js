@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     display.textContent = `${previousInput} ${operator}`
                 }
             } else {
+                if(value === '.' && currentInput.includes('.')){
+                    return;
+                }
                 currentInput += value;
                 display.textContent = operator ? `${previousInput} ${operator} ${currentInput}` : currentInput;
             }
